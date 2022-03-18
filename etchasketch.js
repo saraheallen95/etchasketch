@@ -1,5 +1,15 @@
 const container = document.getElementById("container");
-container.setAttribute("style", "display: flex; flex-direction: column;");
+container.setAttribute("style", "display: flex; flex-direction: column; justify-content: center; align-items: center;");
+
+const title = document.createElement("h1");
+title.innerText = "Sarah's Etch A Sketch Project"
+title.setAttribute("style", "margin-top: 36px;");
+container.appendChild(title);
+
+const text = document.createElement("p");
+text.setAttribute("style", "font-size: 24px; margin: -10px;");
+text.innerText = "Click the button below to reset the Etch A Sketch and enter your desired number of columns and rows."
+container.appendChild(text);
 
 const buttonDiv = document.createElement("div");
 container.appendChild(buttonDiv);
@@ -9,8 +19,8 @@ createCell(initialGrid, 10, 10);
 gridDetect(initialGrid, 10, 10); 
 
 const button = document.createElement("button");
-button.innerText = "Reset grid";
-button.setAttribute("style", "margin: 16px;");
+button.innerText = "Reset Grid";
+button.setAttribute("style", "margin-top: 24px; margin-bottom: -8px; height: 50px; width: 125px; font-size: 18px;");
 button.onclick = function () {
 
     let columns = prompt("How many columns?");
@@ -52,23 +62,26 @@ function setTemplate (grid, num) {
 }
 
 function setCellWidthHeight(cell, columns, rows) {
-    let width = (200/columns);
-    let height = (200/rows);
+    let width = (600/columns);
+    let height = (600/rows);
     let widthStr = width + "px";
     let heightStr = height + "px";
     cell.style.width = widthStr;
+ 
+
     cell.style.height = heightStr;
     cell.style.minHeight = widthStr;
     cell.style.maxHeight = heightStr;
     cell.style.minWidth = widthStr;
     cell.style.maxWidth = heightStr;
+
 }
 
 function createGrid () {
 
     const grid = document.createElement('div');
     container.appendChild(grid);
-    grid.setAttribute("style", "display: grid; width: 200px; height: 200px; min-height: 200px; max-height: 200px; max-width: 200px; min-width: 200px; grid-template-columns: auto auto auto;")
+    grid.setAttribute("style", "display: grid; width: 600px; height: 600px; min-height: 600px; max-height: 600px; max-width: 600px; min-width: 600px; grid-template-columns: auto auto auto; margin: 24px;")
     /*"style", "display: flex; flex: 0; margin: 16px;")*/
 
       return grid;
@@ -87,7 +100,8 @@ function gridDetect(grid, columns, rows) {
             && event.clientY >= rect.top
             && event.clientY <= rect.bottom;
         if (elementDetected) {
-            cell.setAttribute("style", "font-size: 1px; background-color: black; color: black; border: .25px solid black; box-sizing: border-box;");
+            cell.setAttribute("style", "font-size: 1px; box-sizing: border-box; background-color: black; color: black; border: 1px solid black;");
+            /*; box-sizing: border-box*/
             setCellWidthHeight(cell, columns, rows);
             return;
         }
@@ -107,7 +121,8 @@ function createCell (grid, columns, rows) {
 
             const cell = document.createElement('div');
             cell.classList.add("cell");
-            cell.setAttribute("style", "font-size: 1px; border: .25px solid black; box-sizing: border-box; align-text: center; display: grid; background-color: red; color: red;")
+            cell.setAttribute("style", "font-size: 1px; box-sizing: border-box; border: 1px solid black; align-text: center; display: grid; background-color: red; color: red;")
+            /*; box-sizing: border-box*/
             cell.textContent = (i + 1);
             setCellWidthHeight(cell, columns, rows);
             grid.appendChild(cell);
@@ -115,6 +130,8 @@ function createCell (grid, columns, rows) {
     
 }
 
+const footer = document.createElement("div");
+container.appendChild.footer;
 
 /*column.setAttribute("style", "display: flex; flex: 0; flex-wrap: wrap;")*/
 /*cell.setAttribute("style", "font-size: 16px; display: flex; flex: 0; border: thin black solid;  aspect-ratio:1/1;")*/
