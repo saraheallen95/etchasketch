@@ -81,7 +81,7 @@ function createGrid () {
 
     const grid = document.createElement('div');
     container.appendChild(grid);
-    grid.setAttribute("style", "display: grid; width: 600px; height: 600px; min-height: 600px; max-height: 600px; max-width: 600px; min-width: 600px; grid-template-columns: auto auto auto; margin: 24px;")
+    grid.setAttribute("style", "display: grid; width: 600px; align-items: stretch; height: 600px; min-height: 600px; max-height: 600px; max-width: 600px; min-width: 600px; grid-template-columns: auto auto auto; margin: 24px;")
     /*"style", "display: flex; flex: 0; margin: 16px;")*/
 
       return grid;
